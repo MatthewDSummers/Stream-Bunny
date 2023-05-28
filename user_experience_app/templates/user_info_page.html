@@ -1,0 +1,110 @@
+{% extends "ue_base.html" %}
+{% load static %}
+{% block fave %}<link rel="shortcut icon" type="image/png" href="{% static 'user_experience_app/images/favicon.png' %}"/>{% endblock %}
+
+{% block page_content %}
+<div class="">{# DELETE THIS DIV? #}
+<div id="user_info_table" class=" vertical_align_top yellow_text"> {# ajax grabs inside this div #}
+    <h3 class="yellow_text px-5 mx-5 mb-4"><i>Your Member Information</i></h3>
+    <div class=""> {# DELETE THIS DIV? #}
+        <div class="row yellow_text mx-5">
+            <div class="col col-2">
+                {% for image in images %}
+                    <img src="{{image.image.url}}" alt="" onclick="imgZoom()" id="user-info-image" class="h-50 w-100 mx-5">
+                {% endfor %}
+            </div>
+            <div class="col col-4 fs-5 ms-4" >
+                <table class="">
+                    <tbody>
+                        <tr>
+                            <td class="px-5">First Name: </td>
+                            <td class="pe-5">{{user.first_name}}</td>
+                        </tr>
+                        <tr>
+                            <td class="px-5">Last Name: </td>
+                            <td class="pe-5">{{user.last_name}}</td>
+                        </tr>
+                        <tr>
+                            <td class="px-5">Email: </td>
+                            <td class="pe-5">{{user.email}}</td>
+                        </tr>
+                        <tr>
+                            <td class="px-5">Birthday: </td>
+                            <td class="pe-5">{{user.birthday}}</td>
+                        </tr>
+                        <tr>
+                            <td class="px-5">Joined on: </td>
+                            <td class="pe-5">{{user.created_at|date:"F j, Y"}}</td>
+                        </tr>
+                    </tbody>
+                </table>                        
+            </div>
+            <div class="col ms-4">
+                <table id="" class="">
+                    <tbody>
+                        <tr>
+                            <td class="fs-5 w-25">About you: </td>
+                        </tr>
+                        <tr>
+                            <td class="pe-5 me-5">{{user.about}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="px-5 text-end">
+        <a id="edit_user_info" class="btn btn-outline-light bg-secondary mx-5 my-4" href="/stream-bunny/user_experience/user_info_page_edit">Edit member information</a>                       
+    </div>
+</div> {# ajax grabs inside this div #}
+<hr>
+<h3 class="yellow_text px-5 mx-5"><i>Your Favorite Movies</i></h3>
+<table id="#main" class="table table-primary table-striped table-hovers">
+    <thead>
+        <tr>
+            <th scope="col" class="px-4"></th>
+            <th scope="col">Movie Title</th>
+            <th scope="col">Directed by</th>
+            <th scope="col">Cast</th>
+            <th scope="col">Year</th>
+            <th scope="col">Rating</th>
+            <th scope="col"># likes </th>
+            <th scope="col">like/un-like </th>
+        </tr>
+    </thead>
+    <div id="main">
+        <tbody>
+            {% for movie in movies %}
+                <tr>
+                    <td class="px-4"></td>
+                    <td><a href="/stream-bunny/user_experience/movie_discussion/{{movie.id}}">{{movie.title}}</a></td>
+                    <td>{{movie.director}}</td>
+                    <td>{{movie.cast}}</td>
+                    <td>{{movie.year}}</td>
+                    <td>{{movie.imdb_rating}}</td>  
+                    <td id="like_count_{{movie.id}}" >{{movie.liked_by.count}}</td>
+                {% if movie not in user.liked_by.all %}    
+                    <td><a class="like" href="" movie_id="{{movie.id}}">like</a></td>  
+                {% else %}
+                    <td><a class="like" href="" movie_id="{{movie.id}}">un-like</a></td>  
+                {% endif %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </div>
+</table>
+</div> 
+<script>
+    $('body').on('click','#edit_user_info',function(e){
+        e.preventDefault();        
+        console.log('edit_user_info has been clicked');
+        $.ajax({
+            url: `/stream-bunny/user_experience/user_info_page_edit`,                         
+            success: serverResponse => {
+                console.log(serverResponse)
+                user_info_table.innerHTML = serverResponse
+            }
+        })
+    });
+</script>
+{% endblock page_content %}

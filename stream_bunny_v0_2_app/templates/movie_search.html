@@ -1,0 +1,39 @@
+{% extends "ue_base.html" %}
+{% load static %}
+{% block fave %}<link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.png' %}"/>{% endblock %}
+<body>
+    <div id="wrapper1">
+
+        {% block page_content %} 
+            <div id="middle-part1">
+                <div id="search-part1" class="col">
+                    <form id="search" autocomplete="off">
+                        <input type="text" id="movie_titles" class="search form-control" placeholder="Search for Movies" value="the matrix">
+                    </form>
+                    <div id="results-box" class="results-card not-visible">test</div>
+                </div>
+                <div id="right-panel" class="row mx-5 px-5 text-light">
+                    <div id="loading-spinner-div" class=""></div>
+                    <div id="movie-details" class="not-visible  col col-3 p-5 bg-light text-dark">
+                        <!-- <h3>Movie Title</h3>
+                        <h4>1990</h4>
+                        <img src="#" alt="poster">
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, suscipit.</p>
+                        <div id="stream-locs">
+                            <h5>Netflix? Hulu? Prime? Disney+?</h5>
+                        </div> -->
+                    </div>
+
+                </div>
+            </div>
+        {% endblock page_content %}
+
+    </div>
+{% block script %} 
+    <script src="{% static 'search_app/js/scripts.js' %}"></script>
+{% endblock script %} 
+
+</body>
+
+</html>
+

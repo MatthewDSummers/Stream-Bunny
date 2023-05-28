@@ -1,0 +1,32 @@
+{% if discussions %}
+
+
+{% for msg in discussions %}
+    <a class="text-decoration-none text-warning" href= "/stream-bunny/user_experience/user_favorite_movies_page/{{msg.user.id}}" >{{msg.user.full_name}}</a>
+        <span> - {{msg.created_at}}</span>
+    <p class="p-2"> {{msg.content}} </p>
+
+    <div class="comment-container-{{msg.id}}">
+        {% for comment in msg.comments.all %}
+            <div class="ms-5">
+                <a class="text-decoration-none text-warning" href= "/stream-bunny/user_experience/user_favorite_movies_page/{{comment.user.id}}" class="member-profile-link">{{comment.user.full_name}}</a>
+                <span> - {{comment.created_at}}</span>
+                <p>{{comment.comment}}</p>
+            </div>
+        {% endfor %}
+    </div>
+
+
+    <form class="form-comment ms-5 p-2" movie_id="{{movie.id}}" msg_id="{{msg.id}}" method="POST">
+        {% csrf_token %}
+        <div class="w-100 text-end" >
+            <textarea rows="2" class="w-100  p-2 mb-2" name="comment" placeholder="Write a response"> </textarea>
+        </div>
+        <div class="w-100 text-end" >
+            <button type="submit" class="btn btn-sm btn-light btn-outline-secondary">Respond</button>
+        </div>
+    </form>
+{% endfor %}
+{% else %}
+<h3 class="m-4 text-light">No discussions yet</h3>
+{% endif %}

@@ -1,0 +1,47 @@
+<h3 class="yellow_text px-5 mx-5 mb-0 bg-danger"><i>Edit Your Member Information</i></h3>
+<div class="text-secondary"> {# DELETE THIS DIV? #}
+    <div class="row bg-light mx-5 pt-4">
+        <div class="col col-1"></div>
+        <div class="col  col-4 fs-5">
+            <table class="">
+                <tbody>
+                    <tr>
+                        <td class="px-5">First Name: </td>
+                        <td class="pe-5"><input class="bg-transparent text-danger" type="text" name="first_name" value = "{{user.first_name}}"></td>
+                    </tr>
+                    <tr>
+                        <td class="px-5">Last Name: </td>
+                        <td class="pe-5"> <input class="bg-transparent text-danger" type="text" name="last_name" value = "{{user.last_name}}"></td>
+                    </tr>
+                    <tr>
+                        <td class="px-5">Email: </td>
+                        <td class="pe-5"> <input class="bg-transparent text-danger" type="text" name="email" value = "{{user.email}}"></td>
+                    </tr>
+                    <tr>
+                        <td class="px-5">Birthday: </td>
+                        <td class="pe-5"> <input class="bg-transparent text-danger" type="date" name="birthday" value = "{{birthday}}"></td>
+                    </tr>
+                    <tr>
+                        <td class="px-5">Joined on: </td>
+                        <td class="pe-5">{{user.created_at|date:"F j, Y"}}</td>
+                    </tr>
+                </tbody>
+            </table>                        
+        </div>
+        <div class="col">
+            <table id="user_info_table" class="table-primaryxxx table-stripedxxx table-hoversxxx text-warningxxx">
+                <tbody>
+                    <tr>
+                        <td class="fs-5 w-25">About you: </td>
+                    </tr>
+                    <td class="pe-5"> 
+                        <textarea class="bg-transparent text-danger w-100 mh-100" name="about_me" rows="9">{{user.about}} </textarea> 
+                    </td>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="px-5 text-end">
+    <a id="user_info_edit_save" class="btn btn-outline-light bg-success my-4 mx-5" href="/stream-bunny/user_experience/user_info_edit_save">Save changes</a>                       
+</div>

@@ -1,0 +1,7 @@
+{% for comment in msg.comments.all %}
+<div class="ms-5">
+    <a class="text-decoration-none text-warning" href= "/stream-bunny/user_experience/user_favorite_movies_page/{{comment.user.id}}" class="member-profile-link">{{comment.user.full_name}}</a>
+    <span> - {{comment.created_at}}</span>
+    <p>{{comment.comment}}</p>
+</div>
+{% endfor %}

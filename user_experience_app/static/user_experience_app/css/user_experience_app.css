@@ -1,0 +1,74 @@
+* {
+    margin:0px;
+    border:0px;
+    padding:0px;
+    box-sizing: border-box;
+    vertical-align: top;
+    /* outline:pink 1px dotted; */
+}
+body {
+    background-image: linear-gradient(lightblue,lightyellow,lightblue);
+    background-color: #1e90ff;
+}
+#wrapper1 {
+    /* outline : 4px solid #fad711; */
+    width: 100%;
+    min-height: 1400px;
+    /* max-height: 500px;  */
+    /* margin: 20px auto; */
+    /* border: 1px solid black; */
+    /* border-radius: 8px; */
+    background-color: #1e90ff;
+}
+.carousel-inner{
+    /* width: 500px; */
+}
+/* comment out "carousel-inner" class to return to Michael's previous carousel set-up  */
+.w-13 {
+    width: 13%;
+}
+.w-12 {
+    width: 37%;
+}
+.justify-text {
+    text-align: justify;
+}
+.spacer {
+    height:100px;
+    width:100%;
+}
+.mb-negative {
+    margin-bottom: 10px;
+}
+.text-xxl {
+    font-size: 70px;
+}
+
+.created-at{
+    color: rgb(208, 208, 208);
+}
+.relative{
+    position:relative;
+}
+/* #user-info-panel{
+    margin-left: 20px;
+} */
+#user-info-image{
+    border-radius: 100%;
+    width: 150px !important;
+    height: 150px !important;
+    /* width:100%;
+    height:50%; */
+    /* margin-left: 176px; */
+}
+#user-info-name{
+    text-align: center;
+}
+#user-info-about{
+    margin-left: 40px;
+    width: 790px;
+}
+#info-right-panel{
+    /* padding: 40px; */
+    /* outline: 2px solid red; */
+}

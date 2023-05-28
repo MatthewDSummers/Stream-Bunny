@@ -1,0 +1,63 @@
+{% extends "ue_base.html"%}
+{% load static %}
+{% block fave %}<link rel="shortcut icon" type="image/png" href="{% static 'login_app/images/favicon.png' %}"/>{% endblock %}
+<body>
+    <div id="wrapper1">
+        {% block carousel %}
+        {% endblock carousel %}
+
+        {% block page_content %} 
+
+        <div id="wrapper2">
+            <div class="column">
+                <h1 class="display-4">Registration</h1>
+                <form action="register" method="post" class="was-validated">
+                        {% csrf_token %}
+                        <label for="first_name">First Name</label>
+                        <input class="login" type="text" name="first_name" value={{request.session.first_name}} >
+                        <span id="" class="errorss">{{request.session.errors.first_name}}</span>
+                        <label for="last_name">Last Name</label>
+                        <input class="login" type="text" name="last_name" value={{request.session.last_name}}>
+                        <span id="" class="errorss">{{request.session.errors.last_name}}</span>
+                        <label for="birthday">Birthday</label>
+                        <input class="login" type="date" name="birthday" value={{request.session.birthday}}>
+                        <span id="" class="errorss">{{request.session.errors.birthday1}}{{request.session.errors.birthday2}}{{request.session.errors.birthday3}}</span>
+                        <label for="email">Email</label>
+                        <input class="login" type="text" name="email" value={{request.session.email}}>
+                        <span id="" class="errorss">{{request.session.errors.email}}{{request.session.errors.email_already_exists}}</span>
+                        <label for="password">Password</label>
+                        <input class="login" type="password" name="password" value={{request.session.password}}>
+                        <span id="" class="errorss">{{request.session.errors.password}}</span>
+                        <label for="confirm_password">Confirm Password</label>
+                        <input class="login" type="password" name="confirm_password" value={{request.session.confirm_password}}>
+                        <span id="" class="errorss">{{request.session.errors.confirm_password}}</span>
+                        <input class="login submit" type="submit" value="Register">
+                </form>
+            </div> 
+            <div class="column">
+                <h1 class="display-4">Login</h1>
+                <form action="login" method="post">
+                    {% csrf_token %}
+                    <label for="email">Email</label>
+                    <input class="login" type="text" name="login_email" value={{request.session.login_email}}>
+                    <span id="" class="errorss">{{request.session.errors.login_email}}{{request.session.errors.user_not_found}}</span>
+                    <label for="password">Password</label>
+                    <input class="login" type="password" name="login_password" value={{request.session.login_password}}>
+                    <span id="" class="errorss">{{request.session.errors.bad_password}}</span>
+                    <input class="login submit" type="submit" value="Login">
+                </form>
+            </div>            
+        </div>
+
+        {% endblock page_content %} 
+
+
+{% comment %}     
+
+    </div>
+
+</body>
+
+</html>
+
+{% endcomment %}     

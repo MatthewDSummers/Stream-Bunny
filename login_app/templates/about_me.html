@@ -1,0 +1,18 @@
+{% extends "ue_base.html"%}
+{% load static %}
+{% block fave %}<link rel="shortcut icon" type="image/png" href="{% static 'login_app/images/favicon.png' %}"/>{% endblock %}
+{% block page_content %} 
+<h1 class="mb-5 yellow_text fst-italic text-center" >Welcome to Stream Bunny, {{user.full_name}}!</h1>
+<div class="d-inline-block w-25 h_400px"></div>
+<div class="d-inline-block w-50">
+    <label class="w-100 text-light text-center my-3" for="about_me">Add an "About Me" section to your profile</label>
+    <div class="text-end">
+        <form action="/stream-bunny/login/about_me_save" method="POST">
+            {% csrf_token %}
+                <textarea rows="10" class="w-100  p-2 mb-4" name="about_me" placeholder="Tell us about yourself"></textarea>
+                <button type="submit" class="btn btn-sm btn-light btn-outline-secondary">Update</button>
+        </form>
+        <a href="/stream-bunny" class="yellow_text d-inline-block mt-4">Skip this for now</a>
+    </div>
+</div>
+{% endblock page_content %} 

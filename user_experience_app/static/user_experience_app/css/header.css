@@ -1,0 +1,71 @@
+* {
+    margin:0px;
+    border:0px;
+    padding:0px;
+    box-sizing: border-box;
+    vertical-align: top;
+    /* outline:pink 1px dotted; */
+}
+.search_ue {
+    width:500px;
+}
+#carousel {
+    width:20%;
+    height:190px;
+    margin:0px auto;
+}
+#logo{
+    width: 40px;
+    background-color: aliceblue;
+    margin-right:5px;
+}
+#has_logo {
+    display:flex;
+    align-items: center;
+}
+.alegreya{
+    font-family: 'Alegreya Sans SC', sans-serif;
+}
+#logo{
+    width: 60px;
+    background-color: aliceblue;
+    margin-right:10px;
+}
+.logo-title{
+    /* position: absolute; top: 50px;left: 110px; */
+    margin-left: 10px;
+    /* color: #000b35; */
+    font-size: 50px;
+    font-weight: bolder;
+}
+#top-part1 {
+    /* outline: 4px solid red; */
+    /* position:relative; */
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
+    /* notneed flex? */
+    height:80px;
+    padding: 20px 100px;
+    margin-bottom: 1.3em;
+}
+#github-p{
+    font-weight: 600;
+}
+.github-links{
+    color: rgb(1, 1, 1);
+    color: yellow;
+    text-decoration: none;
+    font-weight: 500;
+}
+    .github-links:hover{
+        color: rgb(252, 206, 125);
+    }
+.logo-motto{
+    /* position: absolute; top: 120px;left: 130px; */
+    color: white;
+    font-size:x-large;
+}
+.yellow_text {
+    color:yellow;
+}

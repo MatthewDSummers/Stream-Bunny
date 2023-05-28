@@ -1,0 +1,32 @@
+        {% extends "ue_base.html" %}
+        {% load static %}
+        {% block fave %}<link rel="shortcut icon" type="image/png" href="{% static 'stream-bunny/user_experience_app/images/favicon.png' %}"/>{% endblock %}
+
+        {% block page_content %}
+        <!-- <div id="wrapper2"> -->
+            <div class="container">
+                <h3 class="yellow_text mx-5 px-3"><i>All Members</i></h3>
+                <table id="#main" class="table table-primary table-striped table-hovers pb-3">
+                                <table id="#main" class="table table-primary table-striped table-hovers">
+                        <thead>
+                            <tr>
+                                <th scope="col"></th>
+                                <th scope="col" class="w-25 px-5">Name</th>
+                                <th scope="col">About</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                    {% for member in members %}
+                        <tr>
+                            <td scope="row"></td>
+                            <td scope="row" class="w-25 px-5"><h5><a class="text-decoration-none" href="/stream-bunny/user_experience/user_favorite_movies_page/{{member.id}}"><b>{{member.full_name}}</b></a></h5></td>
+                            <td class="pe-5 justify-text">{% if member.about %}{{member.about}}{% endif %}</td>
+                        </tr>
+                    {% endfor %}
+                    
+                </table>
+            <!-- </div> -->
+        </div> {# END OF wrapper2 #}
+
+            {% endblock page_content %}

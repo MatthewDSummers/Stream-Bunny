@@ -1,0 +1,121 @@
+{% extends "ue_base.html" %}
+{% load static %}
+{% block fave %}<link rel="shortcut icon" type="image/png" href="{% static 'user_experience_app/images/favicon.png' %}"/>{% endblock %}
+{% block page_content %}
+
+<div class="row mx-5 px-5 text-light">
+    <h1 class="yellow_text"><i>{{movie.title}}</i></h1>
+    <div id="discuss-movie-infoXXXX" class="col-4 bg-warningxxx">
+        <h3 class="">{{movie.year}}</h3>
+        <img class="w-12 pb-4" src="{{movie.poster_link}}" alt="movie poster">
+        <p class="mb-1 mb-negativexx"><i>{{genres}}</i></p>
+        <p class="mb-1 justify-text">{{movie.plot}}</p>
+        <p class="mb-1">Starring <i>{{movie.cast}}</i></p>
+        <p class="mb-1">Directed By <i>{{movie.director}}</i></p>
+        <p class="mb-1">IMDB rating {{movie.imdb_rating}}</p>
+        {% if movie not in user.liked_by.all %}    
+            <a class="like btn btn-sm btn-light btn-outline-secondary my-4" href="" movie_id="{{movie.id}}">like</a>  
+        {% else %}
+            <a class="like btn btn-sm btn-light btn-outline-secondary my-4" href="" movie_id="{{movie.id}}">un-like</a>  
+        {% endif %}
+        <p class="pt-2"><span id="like_count_{{movie.id}}" >{{movie.liked_by.count}}</span> likes - liked by: </p>
+        {#<p></p>#}
+        {% for user in movie.liked_by.all %} <p class='my-1'><a class="ms-4 fst-italic text-decoration-none text-warning" href="/stream-bunny/user_experience/user_favorite_movies_page/{{user.id}}"> {{user.full_name}} </a></p> {% endfor %}
+
+        <div id="stream-locs"></div>
+    </div>
+    <div class="col-7 ms-5 ps-5" >
+        <h2 class="mb-4 text-light">Discussion about this film:</h2>
+
+
+        <div id="discussion-container">
+            {% if discussions %}
+
+                {% for msg in discussions %}
+                    <a class="text-decoration-none text-warning" href= "/stream-bunny/user_experience/user_favorite_movies_page/{{msg.user.id}}" >{{msg.user.full_name}}</a>
+                        <span class="created-at"> - {{msg.created_at}}</span>
+                    <p class="p-2"> {{msg.content}} </p>
+
+                    <div class="comment-container-{{msg.id}}">
+                        {% for comment in msg.comments.all %}
+                            <div class="ms-5">
+                                <a class="text-decoration-none text-warning" href= "/stream-bunny/user_experience/user_favorite_movies_page/{{comment.user.id}}" class="member-profile-link">{{comment.user.full_name}}</a>
+                                <span class="created-at"> - {{comment.created_at}}</span>
+                                <p>{{comment.comment}}</p>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    {{user.images.image}}
+
+                    <form class="form-comment ms-5 p-2" movie_id="{{movie.id}}" msg_id="{{msg.id}}" method="POST">
+                        {% csrf_token %}
+                        <div class="w-100 text-end" >
+                            <textarea placeholder="Write a response" rows="2" class="w-100  p-2 mb-2" name="comment"> </textarea>
+                        </div>
+                        <div class="w-100 text-end" >
+                            <button type="submit" class="btn btn-sm btn-light btn-outline-secondary">Respond</button>
+                        </div>
+                    </form>
+                {% endfor %}
+            {% else %}
+                <h3 class="m-4 text-light">No discussions yet</h3>
+            {% endif %}
+        </div>
+
+
+        <div class="spacer"></div>
+
+        <h2 class="my-4 text-light">Share your thoughts about this film:</h2>
+
+        <form movie_id="{{movie.id}}" class="form-discussion" method="POST">
+            {% csrf_token %}
+                <textarea class="w-100 p-2"  name="discuss" rows="6" placeholder="Write your thoughts here"> </textarea>
+                <div class="w-100 d-flex justify-content-end">
+                    <button type="submit" class="btn btn-sm btn-light btn-outline-secondary my-4"   value="Post message" id="submit-post-btn">Share</button>
+                </div>
+        </form>
+    </div>
+
+
+    <div class="spacer"></div>
+
+    <form action="/stream-bunny/user_experience/delete_discussions" method="POST">
+        {% csrf_token%}
+        <button type=submit>Delete all posts</button>
+    </form>
+</div>
+<script> 
+
+    $('.form-discussion').submit(function(e){
+        let movie_id = $(this).attr("movie_id")
+        e.preventDefault();        
+        $.ajax({
+    		url:`/stream-bunny/user_experience/discuss/${movie_id}`,        
+    		method: 'post',                         
+    		data: $(this).serialize(),              
+    		success: function(serverResponse){      
+                $('#discussion-container').html(serverResponse)    
+	        }
+        })
+        $(this).trigger('reset') 
+    });
+
+    $('body').on('submit','.form-comment',function(e){
+        let movie_id = $(this).attr("movie_id")
+        let msg_id = $(this).attr("msg_id")
+        e.preventDefault();        
+        $.ajax({
+    		url:`/stream-bunny/user_experience/comment/${movie_id}/${msg_id}`,        
+    		method: 'post',                         
+    		data: $(this).serialize(),              
+    		success: function(serverResponse){      
+                $('#discussion-container').html(serverResponse)    
+	        }
+        })
+        $(this).trigger('reset') 
+    });
+
+</script>
+
+{% endblock page_content %}
+

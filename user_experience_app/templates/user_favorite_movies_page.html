@@ -1,0 +1,45 @@
+{% extends "ue_base.html" %}
+{% load static %}
+{% block fave %}<link rel="shortcut icon" type="image/png" href="{% static 'user_experience_app/images/favicon.png' %}"/>{% endblock %}
+
+
+{% block page_content %}
+<div class="">
+    <h3 class="yellow_text px-5 mx-5"><i>{{member.first_name}} {{member.last_name}}'s Favorite Movies</i></h3>
+    <table id="#main" class="table table-primary table-striped table-hovers">
+        <thead>
+            <tr>
+                <th scope="col" class="px-4"></th>
+                <th scope="col">Movie Title</th>
+                <th scope="col">Directed by</th>
+                <th scope="col">Cast</th>
+                <th scope="col">Year</th>
+                <th scope="col">Rating</th>
+                <th scope="col"># likes </th>
+                <th scope="col">like/un-like </th>
+            </tr>
+        </thead>
+        <div id="main">
+            <tbody>
+                {% for movie in movies %}
+                    <tr>
+                        <td class="px-4"></td>
+                        <td><a class="btn btn-outline-primary btn-sm" href="/stream-bunny/user_experience/movie_discussion/{{movie.id}}">{{movie.title}}</a></td>
+                        <td>{{movie.director}}</td>
+                        <td>{{movie.cast}}</td>
+                        <td>{{movie.year}}</td>
+                        <td>{{movie.imdb_rating}}</td>  
+                        <td id="like_count_{{movie.id}}" >{{movie.liked_by.count}}</td>
+                    {% if movie not in user.liked_by.all %}    
+                        <td><a class="like btn btn-outline-success btn-sm" href="" movie_id="{{movie.id}}">like</a></td>  
+                    {% else %}
+                        <td><a class="like btn btn-outline-success btn-sm" href="" movie_id="{{movie.id}}">un-like</a></td>  
+                    {% endif %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </div>
+    </table>
+</div>
+{% endblock page_content %}
+

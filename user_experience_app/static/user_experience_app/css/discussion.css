@@ -1,0 +1,204 @@
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --font-color: rgb(5, 5, 5);
+    --light-red: rgb(255, 255, 255);
+}
+
+/* html, body{
+    font-family: 'Josefin Slab', serif;
+    min-height: 100%;
+    height: 100%;
+    width: 100%;
+    font-size: 18px;
+} */
+h1{
+    margin-top: 20px;
+}
+
+h4{
+    color: rgb(3, 143, 3);
+}
+a{
+    color: rgb(0, 34, 109);
+    display: block;
+}
+
+input{
+    margin-bottom: 12px;
+}
+/* .container{
+    min-height: inherit;
+    height: auto;
+    padding: 20px;
+    min-width: 100%;
+    opacity: .9;
+    background-image: linear-gradient( #d1e8ff, #65b2ff, #2994ff);
+} */
+#content-1{
+    margin: 0px 40px 20px 0px;
+    padding: 20px;
+}
+#content-2{
+    padding: 20px;
+    height: 90%;
+}
+.btn-block{
+    margin-top: 40px;
+    background-color: #ffff8c;
+    background-color: #ffffffa9;
+    border: 1px solid rgb(85, 85, 85);
+    /* margin-right: 400px; */
+}
+.btn-lg{
+    background-color: rgb(255, 255, 158);
+    border: 1px solid rgb(85, 85, 85);
+    color: rgb(0, 37, 117);
+}
+#errors-new{
+    opacity: .7;
+    height: auto;
+    margin-bottom: 20px;
+    width: 100%;
+    border: 2px solid rgb(247, 121, 121);
+    padding: 10px;
+    background-color: green;
+    background-color: #fcd6d6;
+}
+.errors-ul{
+    /* font-family: 'Josefin Slab', serif; */
+    font-size: 18px;
+    font-weight: bolder;
+    text-align: center;
+    list-style-type: none;
+}
+.error-p{
+    margin-bottom: -14px;
+    font-size: 40px;
+}
+
+#success-new{
+    opacity: .7;
+    height: auto;
+    margin-bottom: 20px;
+    width: 100%;
+    border: 2px solid rgb(11, 0, 170);
+    padding: 10px;
+    background-color: #fdff9e;
+}
+.success-ul{
+    /* font-family: 'Josefin Slab', serif; */
+    font-size: 18px;
+    font-weight: bolder;
+    text-align: center;
+    list-style-type: none;
+}
+.success-p{
+    margin-bottom: -14px;
+    font-size: 40px;
+}
+
+    #wall-user-name{
+        /* display: inline; */
+        position: absolute; right: 130px; top: 17px;
+        color: rgb(31, 31, 31);
+    }
+        .enlarged{
+            font-size: 44px;
+            font-family: 'Neucha', cursive;
+        }
+        .purple{
+            color: rgb(154, 0, 0);
+            /* font-size: 32px; */
+        }
+        .blue{
+            color: rgb(0, 31, 157);
+            font-size: 20px;
+        }
+        #created_time{
+            display: inline;
+        }
+    #msg-div{
+        position: relative;
+    }
+    #msg-box{
+        width: 40%;
+        margin-left: 7%;
+        border-radius: 20px;
+        padding: 14px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 20px;
+        resize: none;
+    }
+    #msg-box-p{
+        margin: 3% 0 1% 8.5%;
+        font-size: 24px;
+    }
+    #submit-post-btn{
+        position: absolute; top: 105%; left: 38%;
+        /* margin-left:72.8%; */
+    }
+.member-profile-link{
+    text-decoration: none;
+}
+#all_posts{
+    /* height: 200px; */
+    width: 60%;
+    margin: 80px 0px 0px 100px;
+    /* background-color: red ; */
+    /* outline: 2px solid black; */
+    /* text-align: center; */
+}
+#each_post{
+    margin-bottom: 1%;
+    border-radius: 10px;
+    padding: 1%;
+    background-color: #ffffff;
+    border-bottom: 1px solid grey;
+}
+#comment-div{
+    position: relative;
+}
+
+#comment-box{
+    width: 50%;
+    margin-top: 1%;
+    margin-left: 50%;
+    padding: 10px;
+    border-radius: 30px;
+    resize: none;
+    padding: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+#all-comments{
+    width: 70%;
+    margin-bottom: .6%;
+    margin-left: 30%;
+    border-radius: 10px;
+    padding: 1%;
+    background-color: #ffffff70;
+}
+#wall-btn{
+    /* margin-left: 87.5%; */
+    position: absolute; top: 63%; right: 0%;
+}
+.wall-btn{
+    border-radius: 50% / 5%;
+    padding:20px;
+    border: 2px solid rgb(38, 14, 14);
+    padding:10px 20px;
+}
+
+
+/* #discuss-wrap{
+    padding: 24px;
+    overflow-wrap: break-word;
+} */
+/* #discuss-movie-details{
+    /* outline: 4px solid yellow; */
+    /* padding-top: 42px;
+} */ 
